@@ -1,13 +1,9 @@
 export const initialState = () => {
   return {
-    shoppingList: [
-      {
-        id: 3,
-        item_name: 'Milk',
-        quantity: 173,
-        done: true,
-      },
-    ],
+    loadingMode: 'idle',
+    loadingError: null,
+    itemCandidateBody: '',
+    shoppingList: [],
   };
 };
 
@@ -16,7 +12,27 @@ export const reducer = (state, action) => {
     case 'shopping-list-load-success':
       return {
         ...state,
+        loadingMode: 'idle',
         shoppingList: action.shoppingList,
+      };
+
+    case 'shopping-list-load-start':
+      return {
+        ...state,
+        loadingMode: 'loading',
+      };
+
+    case 'shopping-list-load-error':
+      return {
+        ...state,
+        loadingMode: 'error',
+        loadingError: action.error,
+      };
+
+    case 'shopping-item-candidate-body-changed':
+      return {
+        ...state,
+        itemCandidateBody: action.body,
       };
 
     default:

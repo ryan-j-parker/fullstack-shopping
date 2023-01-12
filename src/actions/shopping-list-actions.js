@@ -4,3 +4,23 @@ export const shoppingListLoadSuccessAction = (shoppingList) => {
     shoppingList,
   };
 };
+
+export const shoppingListLoadStartAction = () => {
+  return {
+    type: 'shopping-list-load-start',
+  };
+};
+
+export const shoppingListLoadErrorAction = (error) => {
+  return {
+    type: 'shopping-list-load-error',
+    error,
+  };
+};
+
+export const shoppingItemCandidateBodyChanged = (body) => {
+  return {
+    body,
+    type: 'shopping-item-candidate-body-changed',
+  };
+};

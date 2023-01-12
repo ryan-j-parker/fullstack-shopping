@@ -20,6 +20,7 @@ export default function App() {
       console.info('items', items);
     });
   }, []);
+  
   return (
     <Router>
       <ShoppingListProvider>
