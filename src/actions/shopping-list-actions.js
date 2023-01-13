@@ -24,3 +24,10 @@ export const shoppingItemCandidateBodyChanged = (body) => {
     type: 'shopping-item-candidate-body-changed',
   };
 };
+
+export const shoppingItemCandidateDoneChanged = (done) => {
+  return {
+    done,
+    type: 'shopping-item-candidate-done-changed',
+  };
+};

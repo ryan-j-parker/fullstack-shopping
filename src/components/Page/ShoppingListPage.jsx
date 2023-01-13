@@ -3,15 +3,15 @@ import ShoppingListForm from './ShoppingListForm';
 import { Context } from '../ShoppingListProvider';
 import { useContext, useEffect } from 'react';
 import { createShoppingListItem } from '../../services/shopping-list-items';
-import { 
-  shoppingItemCandidateBodyChanged, 
+import {
+  shoppingItemCandidateBodyChanged,
+  shoppingItemCandidateDoneChanged,
 } from '../../actions/shopping-list-actions';
 import { 
-  getShoppingListItemsEffect, 
+  getShoppingListItemsEffect 
 } from '../../effects/shopping-list-effects';
 
 export default function ShoppingListPage() {
-  // write handlers for props in ShoppingListForm.jsx
 
   const { state, dispatch } = useContext(Context);
   useEffect(() => {
@@ -34,11 +34,15 @@ export default function ShoppingListPage() {
         onBodyChanged={(body) => {
           dispatch(shoppingItemCandidateBodyChanged(body));
         }}
+        isDone={state.isDone}
+        onDoneChanged={(done) => {
+          dispatch(shoppingItemCandidateDoneChanged(done));
+        }}
         onSubmit={async (body) => {
           await createShoppingListItem({
             item_name: body,
             quantity: 0,
-            done: false,
+            done: state.isDone,
           });
           getShoppingListItemsEffect(dispatch);
           dispatch(shoppingItemCandidateBodyChanged(''));

@@ -1,12 +1,9 @@
 export default function ShoppingItem({ item }) {
   return (
     <div>
-      <ol>
-        {/* {item.id} */}
-        <li>{item.item_name}</li>
-        <li>{item.quantity}</li>
-        <li>{item.done}</li>
-      </ol>
+      {item.item_name}
+      {item.quantity}
+      {item.done}
     </div>
   );
 }

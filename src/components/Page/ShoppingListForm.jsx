@@ -1,32 +1,9 @@
-// export default function ShoppingListForm() {
-//   const [item, setItem] = useState('');
-//   const [list, setList] = useState([]);
-
-//   const onFormSubmit = (e) => {
-//     e.preventDefault();
-//     setList([...list, item]);
-//   };
-
-//   return (
-//     <form
-//       onSubmit={(e) => {
-//         e.preventDefault();
-//         onFormSubmit(e);
-//       }}
-//     >
-//       <textarea
-//         value={item}
-//         onChange={(e) => setItem(e.target.value)}
-//       />
-//       <button type="submit">add item</button>
-//     </form>
-//   );
-// }
-
 export default function ShoppingListForm({
   body,
   onBodyChanged,
   onSubmit,
+  isDone,
+  onDoneChanged,
 }) {
   return (
     <form
@@ -35,12 +12,24 @@ export default function ShoppingListForm({
         onSubmit(body);
       }}
     >
-      <textarea
+      <input
+        type="text"
         value={body}
         onChange={(e) => {
           onBodyChanged(e.target.value);
         }}
       />
+      <label>
+        <input
+          checked={isDone}
+          type="checkbox"
+          onChange={(e) => onDoneChanged(e.target.checked)}
+        />
+      </label>
+      <label>
+        quantity
+        <input type="text" />
+      </label>
       <button type="submit">submit</button>
     </form>
   );

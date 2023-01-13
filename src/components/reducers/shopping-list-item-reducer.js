@@ -4,6 +4,7 @@ export const initialState = () => {
     loadingError: null,
     itemCandidateBody: '',
     shoppingList: [],
+    isDone: false,
   };
 };
 
@@ -33,6 +34,12 @@ export const reducer = (state, action) => {
       return {
         ...state,
         itemCandidateBody: action.body,
+      };
+
+    case 'shopping-item-candidate-done-changed':
+      return {
+        ...state,
+        isDone: action.done,
       };
 
     default:
