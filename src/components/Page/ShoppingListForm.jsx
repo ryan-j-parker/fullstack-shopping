@@ -1,6 +1,7 @@
 export default function ShoppingListForm({
   body,
   onBodyChanged,
+  onQuantityChanged,
   onSubmit,
   isDone,
   onDoneChanged,
@@ -28,7 +29,12 @@ export default function ShoppingListForm({
       </label>
       <label>
         quantity
-        <input type="text" />
+        <input
+          type="text"
+          onChange={(e) => {
+            onQuantityChanged(e.target.value);
+          }}
+        />
       </label>
       <button type="submit">submit</button>
     </form>

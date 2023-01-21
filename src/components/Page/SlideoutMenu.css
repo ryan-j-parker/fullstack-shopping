@@ -4,8 +4,8 @@
   width: var(--header-height);
 
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
-
   border: 0;
   &:focus {
     outline: 0;
