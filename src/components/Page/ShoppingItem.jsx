@@ -1,15 +1,22 @@
-export default function ShoppingItem({ item, onDoneChanged }) {
+export default function ShoppingItem({
+  item,
+  onDoneChanged,
+  isDone,
+}) {
   return (
     <div>
-      {item.item_name}
-      {item.quantity}
-      {item.done}
+      <span>
+        {item.item_name} - qty: {item.quantity} {item.done}
+      </span>
       <input
         type="checkbox"
-        checked={item.done}
-        onChange={(e) => {
-          onDoneChanged(e.target.checked);
-        }}
+        checked={isDone}
+        // onChange={(e) =>
+        //   isDone(e.target.checked)}
+        //         onChange={(done) => {
+        //   onDoneChanged(item.id, done);
+        // }}
+        onChange={(done) => onDoneChanged(item.id, done)}
       />
     </div>
   );

@@ -25,9 +25,30 @@ export const shoppingItemCandidateBodyChanged = (body) => {
   };
 };
 
-export const shoppingItemCandidateDoneChanged = (done) => {
+export const shoppingItemCandidateDoneChanged =  (done) => {
   return {
     done,
     type: 'shopping-item-candidate-done-changed',
+  };
+};
+
+export const shoppingItemCandidateQuantityChanged = (quantity) => {
+  return {
+    quantity,
+    type: 'shopping-item-candidate-quantity-changed',
+  };
+};
+
+export const shoppingItemUpdated = (item) => {
+  return {
+    item,
+    type: 'shopping-item-updated',
+  };
+};
+
+export const shoppingItemDeleted = (item) => {
+  return {
+    item,
+    type: 'shopping-item-deleted',
   };
 };

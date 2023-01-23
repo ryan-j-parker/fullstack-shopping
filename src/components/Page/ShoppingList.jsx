@@ -1,26 +1,16 @@
 import ShoppingItem from './ShoppingItem';
 
-// import { useState } from 'react';
-
-// function Checkbox() {
-//   const [checked, setChecked] = useState(false);
-//   return (
-//     <>
-//       <label>
-//         <input
-//           type="checkbox"
-//           value={checked}
-//           onChange={() => setChecked(!checked)}
-//         />
-//         {checked ? 'done!' : 'mark as done'}
-//       </label>
-//     </>
-//   );
-// }
-
 export default function ShoppingList({
   shoppingList,
-  onItemDoneChanged,
+  onDoneChanged,
+  onItemUpdated,
+  onItemDeleted,
+  // updateShoppingItem,
+  // deleteShoppingItem,
+  // getShoppingListItemsEffect,
+  // dispatch,
+  // shoppingItemUpdated,
+  // shoppingItemDeleted,
 }) {
   return (
     <ol>
@@ -29,13 +19,42 @@ export default function ShoppingList({
           <li key={item.id}>
             <ShoppingItem
               item={item}
-              onDoneChanged={(done) =>
-                onItemDoneChanged(item.id, done)
-              }
+              onDoneChanged={(done) => onDoneChanged(item.id, done)}
+              quantity={(quantity) => quantity(item.id, quantity)}
+              // onItemUpdated={async (id, item) => {
+              //   await updateShoppingItem(id, item);
+              //   getShoppingListItemsEffect(dispatch);
+              //   dispatch(shoppingItemUpdated);
+              // }}
+              // onItemDeleted={async (id) => {
+              //   await deleteShoppingItem(id);
+              //   getShoppingListItemsEffect(dispatch);
+              //   dispatch(shoppingItemDeleted);
+              // }}
+              onItemUpdated={onItemUpdated}
+              onItemDeleted={onItemDeleted}
             />
-            {/* <Checkbox 
-              onChange={(e) => isDone(e.target.value)}
-            /> */}
+            <button
+              type="submit"
+              // onClick={() => {
+              //   onItemUpdated(item.id, {
+              //     done: !item.done,
+              //   });
+              // }}
+            >
+              update
+            </button>
+            <button 
+              type="submit" 
+              // onClick={() => onItemDeleted(item)}
+              onClick={() => {
+                onItemDeleted(item.id);
+              }}
+
+            >
+              delete
+            </button>
+            ;
           </li>
         );
       })}

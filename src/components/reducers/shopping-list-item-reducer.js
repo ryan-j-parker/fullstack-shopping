@@ -4,6 +4,7 @@ export const initialState = () => {
     loadingError: null,
     itemCandidateBody: '',
     shoppingList: [],
+    quantity: 0,
     isDone: false,
   };
 };
@@ -36,10 +37,35 @@ export const reducer = (state, action) => {
         itemCandidateBody: action.body,
       };
 
+    case 'shopping-item-candidate-quantity-changed':
+      return {
+        ...state,
+        quantity: action.quantity,
+      };
+
     case 'shopping-item-candidate-done-changed':
       return {
         ...state,
         isDone: action.done,
+      };
+
+    case 'shopping-item-updated':
+      return {
+        ...state,
+        shoppingList: state.shoppingList.map((item) => {
+          if (item.id === action.item.id) {
+            return action.item;
+          }
+          return item;
+        }),
+      };
+
+    case 'shopping-item-deleted':
+      return {
+        ...state,
+        shoppingList: state.shoppingList.filter((item) => {
+          return item.id !== action.item.id;
+        }),
       };
 
     default:

@@ -13,27 +13,33 @@ export default function ShoppingListForm({
         onSubmit(body);
       }}
     >
-      <input
-        type="text"
-        value={body}
-        onChange={(e) => {
-          onBodyChanged(e.target.value);
-        }}
-      />
       <label>
+        Item: {' '}
         <input
-          checked={isDone}
-          type="checkbox"
-          onChange={(e) => onDoneChanged(e.target.checked)}
+          type="text"
+          value={body}
+          onChange={(e) => {
+            onBodyChanged(e.target.value);
+          }}
         />
       </label>
+      <br />
       <label>
-        quantity
+        Quantity: {' '}
         <input
           type="text"
           onChange={(e) => {
             onQuantityChanged(e.target.value);
           }}
+        />
+      </label>
+      <br />
+      <label>
+        Done? {' '}
+        <input
+          checked={isDone}
+          type="checkbox"
+          onChange={(e) => onDoneChanged(e.target.checked)}
         />
       </label>
       <button type="submit">submit</button>
