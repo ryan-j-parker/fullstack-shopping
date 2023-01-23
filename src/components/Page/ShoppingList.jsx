@@ -36,11 +36,11 @@ export default function ShoppingList({
             />
             <button
               type="submit"
-              // onClick={() => {
-              //   onItemUpdated(item.id, {
-              //     done: !item.done,
-              //   });
-              // }}
+              onClick={() => {
+                onItemUpdated(item.id, {
+                  done: !item.done,
+                });
+              }}
             >
               update
             </button>
