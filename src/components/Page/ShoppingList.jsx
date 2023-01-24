@@ -34,27 +34,28 @@ export default function ShoppingList({
               onItemUpdated={onItemUpdated}
               onItemDeleted={onItemDeleted}
             />
-            <button
-              type="submit"
-              onClick={() => {
-                onItemUpdated(item.id, {
-                  done: !item.done,
-                });
-              }}
-            >
-              update
-            </button>
-            <button 
-              type="submit" 
-              // onClick={() => onItemDeleted(item)}
-              onClick={() => {
-                onItemDeleted(item.id);
-              }}
-
-            >
-              delete
-            </button>
-            ;
+            <span>
+              <button
+                type="submit"
+                onClick={() => {
+                  onItemUpdated(item.id, {
+                    done: !item.done,
+                  });
+                }}
+              >
+                update{' '}
+              </button>
+              <br />
+              <button
+                type="submit"
+                // onClick={() => onItemDeleted(item)}
+                onClick={() => {
+                  onItemDeleted(item.id);
+                }}
+              >
+                delete{' '}
+              </button>
+            </span>
           </li>
         );
       })}

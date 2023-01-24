@@ -5,17 +5,20 @@ export default function ShoppingListForm({
   onSubmit,
   isDone,
   onDoneChanged,
+  id,
 }) {
   return (
     <form
+      data-testid={`shopping-list-form-${id}`}
       onSubmit={(e) => {
         e.preventDefault();
         onSubmit(body);
       }}
     >
       <label>
-        Item: {' '}
+        Item:{' '}
         <input
+          data-testid={`shopping-list-form-input-${id}`}
           type="text"
           value={body}
           onChange={(e) => {
@@ -25,9 +28,10 @@ export default function ShoppingListForm({
       </label>
       <br />
       <label>
-        Quantity: {' '}
+        Quantity:{' '}
         <input
-          type="text"
+          data-testid={`shopping-list-form-quantity-${id}`}
+          type="number"
           onChange={(e) => {
             onQuantityChanged(e.target.value);
           }}
@@ -35,14 +39,20 @@ export default function ShoppingListForm({
       </label>
       <br />
       <label>
-        Done? {' '}
+        Done?{' '}
         <input
+          data-testid={`shopping-list-form-done-${id}`}
           checked={isDone}
           type="checkbox"
           onChange={(e) => onDoneChanged(e.target.checked)}
         />
       </label>
-      <button type="submit">submit</button>
+      <button 
+        data-testid={`shopping-list-form-button-${id}`} 
+        type="submit"
+      >
+        submit
+      </button>
     </form>
   );
 }
