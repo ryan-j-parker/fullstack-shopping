@@ -10,7 +10,7 @@ export default function ShoppingList({
     <ol>
       {shoppingList.map((item) => {
         return (
-          <li key={item.id} data-testid={`shopping-item-${item.id}`}s>
+          <li key={item.id} data-testid={`shopping-item-${item.id}`}>
             <ShoppingItem
               item={item}
               onDoneChanged={(done) => onDoneChanged(item.id, done)}

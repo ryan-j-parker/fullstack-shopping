@@ -14,7 +14,9 @@ import {
   shoppingItemDeleted,
   shoppingItemUpdated,
 } from '../../actions/shopping-list-actions';
-import { getShoppingListItemsEffect } from '../../effects/shopping-list-effects';
+import { 
+  getShoppingListItemsEffect 
+} from '../../effects/shopping-list-effects';
 
 export default function ShoppingListPage() {
   const { state, dispatch } = useContext(Context);
