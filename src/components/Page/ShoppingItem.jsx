@@ -9,13 +9,9 @@ export default function ShoppingItem({
         {item.item_name} - qty: {item.quantity} {item.done}
       </span>
       <input
+        data-testid={`shopping-item-done-${item.id}`}
         type="checkbox"
         checked={isDone}
-        // onChange={(e) =>
-        //   isDone(e.target.checked)}
-        //         onChange={(done) => {
-        //   onDoneChanged(item.id, done);
-        // }}
         onChange={(done) => onDoneChanged(item.id, done)}
       />
     </div>

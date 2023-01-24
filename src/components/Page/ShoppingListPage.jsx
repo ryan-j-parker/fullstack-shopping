@@ -2,8 +2,8 @@ import ShoppingList from './ShoppingList';
 import ShoppingListForm from './ShoppingListForm';
 import { Context } from '../ShoppingListProvider';
 import { useContext, useEffect } from 'react';
-import { 
-  createShoppingListItem, 
+import {
+  createShoppingListItem,
   updateShoppingItem,
   deleteShoppingItem,
 } from '../../services/shopping-list-items';
@@ -14,9 +14,7 @@ import {
   shoppingItemDeleted,
   shoppingItemUpdated,
 } from '../../actions/shopping-list-actions';
-import { 
-  getShoppingListItemsEffect 
-} from '../../effects/shopping-list-effects';
+import { getShoppingListItemsEffect } from '../../effects/shopping-list-effects';
 
 export default function ShoppingListPage() {
   const { state, dispatch } = useContext(Context);
@@ -39,6 +37,7 @@ export default function ShoppingListPage() {
         <span>loading items...</span>
       ) : (
         <ShoppingList
+          data-testid={'shopping-list'}
           shoppingList={state.shoppingList}
           onDoneChanged={handleUpdateChange}
           onItemUpdated={async (id, item) => {
@@ -76,17 +75,6 @@ export default function ShoppingListPage() {
           getShoppingListItemsEffect(dispatch);
           dispatch(shoppingItemCandidateBodyChanged(''));
         }}
-        // onItemUpdated={async (id, item) => {
-        //   await updateShoppingItem(id, item);
-        //   getShoppingListItemsEffect(dispatch);
-        //   dispatch(shoppingItemUpdated);
-        // }}
-        // onItemDeleted={async (id) => {
-        //   await deleteShoppingItem(id);
-        //   getShoppingListItemsEffect(dispatch);
-        //   dispatch(shoppingItemDeleted);
-        // }}
-
       />
     </>
   );

@@ -5,37 +5,22 @@ export default function ShoppingList({
   onDoneChanged,
   onItemUpdated,
   onItemDeleted,
-  // updateShoppingItem,
-  // deleteShoppingItem,
-  // getShoppingListItemsEffect,
-  // dispatch,
-  // shoppingItemUpdated,
-  // shoppingItemDeleted,
 }) {
   return (
     <ol>
       {shoppingList.map((item) => {
         return (
-          <li key={item.id}>
+          <li key={item.id} data-testid={`shopping-item-${item.id}`}s>
             <ShoppingItem
               item={item}
               onDoneChanged={(done) => onDoneChanged(item.id, done)}
               quantity={(quantity) => quantity(item.id, quantity)}
-              // onItemUpdated={async (id, item) => {
-              //   await updateShoppingItem(id, item);
-              //   getShoppingListItemsEffect(dispatch);
-              //   dispatch(shoppingItemUpdated);
-              // }}
-              // onItemDeleted={async (id) => {
-              //   await deleteShoppingItem(id);
-              //   getShoppingListItemsEffect(dispatch);
-              //   dispatch(shoppingItemDeleted);
-              // }}
               onItemUpdated={onItemUpdated}
               onItemDeleted={onItemDeleted}
             />
             <span>
               <button
+                data-testid={`shopping-list-update-${item.id}`}
                 type="submit"
                 onClick={() => {
                   onItemUpdated(item.id, {
@@ -47,8 +32,8 @@ export default function ShoppingList({
               </button>
               <br />
               <button
+                data-testid={`shopping-list-delete-${item.id}`}
                 type="submit"
-                // onClick={() => onItemDeleted(item)}
                 onClick={() => {
                   onItemDeleted(item.id);
                 }}
